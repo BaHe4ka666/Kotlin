@@ -1,4 +1,3 @@
-import src.Assistant
 import src.ProductCard
 
 fun main() {
@@ -14,8 +13,6 @@ fun main() {
     print("Enter price: ")
     val price = readln().toInt()
 
-    val productCard = ProductCard()
-
-    productCard.init(name = name, brand = brand, size = size, price = price) //именованные параметры
+    val productCard = ProductCard(name = name, brand = brand, size = size, price = price)
     productCard.printInfo()
 }

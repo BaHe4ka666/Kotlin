@@ -1,7 +1,6 @@
 package src
 
 fun main() {
-    val john: Person = Person()
     println("First name: ")
     val johnName = readln()
     println("First age: ")
@@ -11,7 +10,9 @@ fun main() {
     println("First height: ")
     val johnHeight = readln().toInt()
 
-    val peter: Person = Person()
+    val john: Person = Person(name = johnName, age = johnAge, height = johnHeight, weight = johnWeight)
+
+
     println("Second name: ")
     val peterName = readln()
     println("Second age: ")
@@ -21,12 +22,11 @@ fun main() {
     println("Second height: ")
     val peterHeight = readln().toInt()
 
+    val peter: Person = Person(name = peterName, age = peterAge, height = peterHeight, weight = peterWeight)
 
-    john.init(name = johnName, age = johnAge, height = johnHeight, weight = johnWeight)
     john.printInfo()
     john.sayHello()
 
-    peter.init(name = peterName, age = peterAge, height = peterHeight, weight = peterWeight)
     peter.printInfo()
     peter.sayHello()
 
