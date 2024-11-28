@@ -23,4 +23,10 @@ fun main() {
 
     println("Name: ${john.name}\nAge: ${john.age}\nWeight: ${john.weight}\nHeight: ${john.height}\n" +
             "Name: ${peter.name}\nAge: ${peter.age}\nWeight:${peter.weight}\nHeight: ${peter.height}")
+
+    john.sayHello()
+    peter.sayHello()
+
+    john.run()
+    peter.run()
 }
