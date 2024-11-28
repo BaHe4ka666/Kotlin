@@ -7,15 +7,30 @@ class TaskCar {
         var bodyColor: String = ""
 
         fun drive() {
-                println("Еду на автомобиле")
+                if (this.enginePower >= 120) {
+                        println("Еду быстро, но недалеко на ${this.brand} ${this.model}")
+                } else {
+                        println("Еду далеко, но небыстро на ${this.brand} ${this.model}")
+                }
+
         }
-        fun refuel(place: String, gas: String, count: Int) {
-                println("Произведена заправка на АЗС \"$place\"\n" +
-                "Марка бензина: $gas\nКол-во литров: $count")
+
+        //fun refuel(place: String, gas: String, count: Int) {
+        //        println("Произведена заправка на АЗС \"$place\"\n" +
+        //        "Марка бензина: $gas\nКол-во литров: $count")
+        //}
+
+        fun init(brand: String, model: String, enginePower: Int, bodyColor: String) {
+                this.brand = brand
+                this.model = model
+                this.enginePower = enginePower
+                this.bodyColor = bodyColor
         }
 }
+
 fun task() {
         val car = TaskCar()
         val info = readln().split(" ")
-        car.refuel(info[0], info[1], info[2].toInt())
+        car.init(brand = info[0], model = info[1], enginePower = info[2].toInt(), bodyColor = info[3])
+        car.drive()
 }
