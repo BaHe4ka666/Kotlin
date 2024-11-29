@@ -3,7 +3,7 @@ package src
 class Assistant {
     var name = ""
 
-    fun bringCoffee(count: Int, nameOfCoffee: String) {
+    fun bringCoffee(count: Int = 1, nameOfCoffee: String = "Латте") {
         repeat(count) {
             println("Подойти к кофе машине")
             println("Налить кофе \"$nameOfCoffee\"")

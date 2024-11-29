@@ -1,17 +1,11 @@
 package src
 
-class Rectangle {
-    val width: Int
-    val length: Int
+class Rectangle(
+    val width: Int = 0, // присваивание значения по умолчанию
+    val length: Int = 0
+) {
 
-    constructor(width: Int, length: Int) {
-        this.width = width
-        this.length = length
-    }
-
-    constructor(size: Int): this(size, size) // перегрузка конструктора
-
-    constructor(): this(0) // перегрузка конструктора
+    constructor(size: Int) : this(size, size) // перегрузка конструктора
 
     fun draw() {
         repeat(this.length) {
