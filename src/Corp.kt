@@ -1,11 +1,11 @@
 import src.Assistant
 import src.Consultant
-import src.ProductCard
+import src.Director
 
 fun main() {
-    val assistant = Assistant()
-    assistant.bringCoffee(count = 4)
-
-    val consultant = Consultant("Alex", 23)
-    consultant.sayHello()
+    val director = Director("Vanya", 23)
+    val assistant = Assistant("Helen")
+    val consultant = Consultant("Oleg")
+    director.getCoffee(assistant)
+    director.startWorkConsultant(consultant)
 }

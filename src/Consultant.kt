@@ -1,5 +1,7 @@
 package src
 
+import kotlin.random.Random
+
 class Consultant(
     val name: String,
     val age: Int = 0
@@ -10,5 +12,13 @@ class Consultant(
         } else {
             println("Привет, меня зовут $name.")
         }
+    }
+
+    fun serveClient(): Int {
+        val random = Random.nextInt(0, 100)
+        repeat(random) {
+            println("The client is served.")
+        }
+        return random
     }
 }
