@@ -3,11 +3,14 @@ package src.corporation
 import src.productCard.ShoesCard
 import src.productCard.FoodCard
 import src.productCard.HouseholdApplianceCard
+import src.productCard.ProductCard
 
 class Accountant(
     name: String,
     age: Int
 ) : Worker(name = name, age = age) {
+
+    val items = mutableListOf<ProductCard>()
 
     override fun work() {
         while (true) {
@@ -26,7 +29,14 @@ class Accountant(
             when (code) {
                 OperationCode.EXIT -> break
                 OperationCode.REGISTER_NEW_ITEM -> registerNewItem()
+                OperationCode.SHOW_ALL_ITEMS -> showAllItems()
             }
+        }
+    }
+
+    fun showAllItems() {
+        for (item in items) {
+            item.printInfo()
         }
     }
 
@@ -54,31 +64,29 @@ class Accountant(
         }
         val index = readln().toInt()
         val product = productType[index - 1]//получение из коллекции типа продукта из коллекции productType
-        when (product) {
+        val card = when (product) {
             ProductType.FOOD -> {
                 println("Enter count of calories: ")
                 val calories = readln().toInt()
                 val list = printHelp()
-                val foodCard = FoodCard(calories, list[0], list[1], list[2].toInt())
-                foodCard.printInfo()
+                FoodCard(calories, list[0], list[1], list[2].toInt())
             }
 
             ProductType.SHOES -> {
                 println("Enter size: ")
                 val size = readln().toInt()
                 val list = printHelp()
-                val shoesCard = ShoesCard(size, list[0], list[1], list[2].toInt())
-                shoesCard.printInfo()
+                ShoesCard(size, list[0], list[1], list[2].toInt())
             }
 
             ProductType.APPLIANCE -> {
                 println("Enter power: ")
                 val power = readln().toInt()
                 val list = printHelp()
-                val applianceCard = HouseholdApplianceCard(power, list[0], list[1], list[2].toInt())
-                applianceCard.printInfo()
+                HouseholdApplianceCard(power, list[0], list[1], list[2].toInt())
             }
         }
+        items.add(card)
     }
 }
 
