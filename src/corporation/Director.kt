@@ -14,4 +14,8 @@ class Director(
         val count = consultant.serveClient()
         println("Consultant ${consultant.name} served $count clients.")
     }
+
+    override fun work() {
+        println("I drink coffee")
+    }
 }

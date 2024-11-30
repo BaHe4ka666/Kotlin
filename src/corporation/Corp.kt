@@ -4,10 +4,11 @@ import src.corporation.Director
 import src.corporation.Worker
 
 fun main() {
-    val director: Worker = Director("Vanya", 23)
-    val assistant: Worker = Assistant("Helen", 32)
-    val consultant: Worker = Consultant("Oleg") // UPCAST
-    (assistant as Assistant).bringCoffee() // DOWNCAST
-    (director as Director).startWorkConsultant(consultant as Consultant)
-    director.getCoffee(assistant) // SMARTCAST
+    val director = Director("Vanya", 23)
+    val assistant = Assistant("Helen", 32)
+    val consultant = Consultant("Oleg")
+    val employees = listOf<Worker>(director, assistant, consultant) // UPCAST
+    for (employee in employees) {
+        employee.work()
+    }
 }

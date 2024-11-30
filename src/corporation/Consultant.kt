@@ -22,4 +22,8 @@ class Consultant(
         }
         return random
     }
+
+    override fun work() {
+        println("I'm serving")
+    }
 }

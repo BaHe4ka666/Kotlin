@@ -14,4 +14,7 @@ class Assistant(
         return nameOfCoffee
     }
 
+    override fun work() {
+        println("I make coffee")
+    }
 }
