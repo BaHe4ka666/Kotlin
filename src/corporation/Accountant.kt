@@ -1,6 +1,5 @@
 package src.corporation
 
-import src.productCard.ProductCard
 import src.productCard.ShoesCard
 import src.productCard.FoodCard
 import src.productCard.HouseholdApplianceCard
@@ -12,14 +11,21 @@ class Accountant(
 
     override fun work() {
         while (true) {
-            print("Enter the operation code. 0 - Exit, 1 - register new item: ")
-            val code = readln().toInt()
-            if (code != 1) {
-                break
-            } else {
-                println("Enter the product type: 1 - food, 2 - shoes, 3 - appliance")
-                val typeCode = readln().toInt()
-                cardFull(typeCode)
+            print("Enter the operation code. ")
+            val operationCode = OperationCode.entries
+            for ((index,code) in operationCode.withIndex()) {
+                print("$index - ${code.title}")
+                if (index < operationCode.size - 1) {
+                    print(", ")
+                } else {
+                    print(": ")
+                }
+            }
+            val index = readln().toInt()
+            val code = operationCode[index]
+            when (code) {
+                OperationCode.EXIT -> break
+                OperationCode.REGISTER_NEW_ITEM -> registerNewItem()
             }
         }
     }
@@ -35,9 +41,21 @@ class Accountant(
         return list
     }
 
-    fun cardFull(typeCode: Int) {
-        when (typeCode) {
-            1 -> {
+    fun registerNewItem() {
+        val productType = ProductType.entries// получение коллекции из enum класса
+        print("Enter the product type: ")
+        for ((index, type) in productType.withIndex()) {// если нужен доступ к порядковым номерам элемента
+            print("${index + 1} - ${type.title}")
+            if (index < productType.size - 1) {
+                print(", ")
+            } else {
+                print(": ")
+            }
+        }
+        val index = readln().toInt()
+        val product = productType[index - 1]//получение из коллекции типа продукта из коллекции productType
+        when (product) {
+            ProductType.FOOD -> {
                 println("Enter count of calories: ")
                 val calories = readln().toInt()
                 val list = printHelp()
@@ -45,7 +63,7 @@ class Accountant(
                 foodCard.printInfo()
             }
 
-            2 -> {
+            ProductType.SHOES -> {
                 println("Enter size: ")
                 val size = readln().toInt()
                 val list = printHelp()
@@ -53,7 +71,7 @@ class Accountant(
                 shoesCard.printInfo()
             }
 
-            3 -> {
+            ProductType.APPLIANCE -> {
                 println("Enter power: ")
                 val power = readln().toInt()
                 val list = printHelp()
