@@ -10,7 +10,7 @@ class Drill(
     weight: Double,
     cableLength: Int,
     price: Price,
-    voltage: Int
+    voltage: Int = 220
 ) : PowerTool(
     brand = brand,
     model = model,
@@ -20,4 +20,7 @@ class Drill(
     price = price,
     voltage = voltage
 ) {
+    override fun turnOn() {
+        println("Дрель сверлит")
+    }
 }

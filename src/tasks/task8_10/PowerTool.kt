@@ -8,4 +8,8 @@ open class PowerTool(
     val cableLength: Int,
     val price: Price,
     val voltage: Int = 220
-)
+) {
+    open fun turnOn() {
+        println("Электроинструмент включен")
+    }
+}
