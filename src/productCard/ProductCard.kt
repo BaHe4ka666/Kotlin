@@ -6,6 +6,6 @@ open class ProductCard(
     val price: Int
 ) {
     open fun printInfo() {
-        println("Name: ${this.name}\nBrand: ${this.brand}\nPrice: ${this.price}")
+        print("Name: ${this.name} Brand: ${this.brand} Price: ${this.price} ")
     }
 }
